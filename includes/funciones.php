@@ -7,13 +7,6 @@ function test_input($data) {
     return $data;
 };
 
-function conseguirEntradas(){
-    $sql = "SELECT e.*, c.* FROM entradas".
-           "INNER JOIN categorias c ON e.categoria_id = c.id". 
-           "ORDER BY e.id DESC LIMIT 2";
-
-
-};
 
 function timeago($date) {
     $timestamp = strtotime($date);       
@@ -33,20 +26,5 @@ function timeago($date) {
     }
  }
 
- function getuser($usuario){
-
-    $sql3 = "SELECT nombre FROM usuarios WHERE id = '.$usuario.'";
-    $server = 'localhost';
-    $username = 'root';
-    $password = '';
-    $database = 'blog';
-
-    $conexion_db = mysqli_connect($server, $username, $password, $database) or exit ("No se pudo conectar a la base de datos");
-    $result = mysqli_query($conexion_db, $sql3);
-    
-
-    return $result;
-
- }
 
 ?>
