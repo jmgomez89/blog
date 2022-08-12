@@ -38,6 +38,11 @@
         require_once("vistas/contacto.html");
     };
 
+    if(isset($_GET['entrada'])){
+        $show = 'none';
+        require_once("vistas/entrada.php");
+    };
+
     if(isset($_SESSION['errores'])){
         $show = 'none';
         require_once("vistas/errores.php");
@@ -60,36 +65,33 @@
 
 ?>
 
-<div class="container-fluid main_container" style="display:<?=$show?> ;">
-    <div class="row main_row">
+<div class="container-fluid main_container" style="display:<?=$show?> ;" >
+    <div class="row main_row" >
         <div class="col main_col">
         </div>
-        <div class="col-10 main_section">
+        <div class="col-10 main_section" >
             <h2>Últimas Entradas</h2>
             <div class="cards_container">
-                <?php
-                    $row = '';
-                    $sql = "SELECT entradas.titulo, entradas.descripcion, entradas.fecha, entradas.imagen, usuarios.nombre AS usu_nombre, categorias.nombre AS cat_nombre FROM entradas LEFT JOIN usuarios ON entradas.id_usuario = usuarios.id LEFT JOIN categorias ON entradas.id_categoria = categorias.id";
-                    $result = mysqli_query($conexion_db, $sql);
             
+                <?php
+                    $result = listar_entradas($conexion_db);
                     while ($row = mysqli_fetch_array($result)) {
 
-
-                    echo '  <div class="card entradas_card">
-                                <img src="data:image/jpeg;base64,'.base64_encode($row["imagen"]).'"alt="card__image" class="card-img-top">
-                                <div class="card-body entradas_card_body">
-                                    <span class="badge text-bg-info">'.$row["cat_nombre"].'</span>
-                                    <h5 class="card-title">'.$row["titulo"].'</h5>
-                                    <p class="card-text">'.$row["descripcion"].'</p>
-                                    <h5>By '.$row["usu_nombre"].'</h5>
-                                    <small>Publicado '. timeago($row["fecha"]).'</small>
-                                </div>
-                            </div>';
+                    echo '<div class="card" style="width: 18rem;">
+                            <img src="data:image/jpeg;base64,'.base64_encode($row["imagen"]).'" class="card-img-top" alt="imagen entrada" style="height: 12rem;">
+                            <div class="card-body">
+                                <a href="index.php?entrada='.$row["id"].'"><h5>'.$row["titulo"].'</h5></a>
+                                <p class="card-text">'.$contenido = substr($row["descripcion"], 0, 300).'...</p>
+                                <span class="badge rounded-pill text-bg-secondary">'.$row["usu_nombre"].'</span>
+                                <span class="badge text-bg-info">'.$row["cat_nombre"].'</span>
+                                <hr>
+                                <small>Publicado '.timeago($row["fecha"]).'</small>
+                            </div>
+                          </div>';   
                                 
                     }
                     
                     mysqli_free_result($result)
-
 
                 ?>
             </div>

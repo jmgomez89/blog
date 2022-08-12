@@ -4,7 +4,12 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- CSS -->
     <link rel="stylesheet" href="/estilos/style.css">
+    <!-- Google Font -->
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@1,700&family=Roboto:wght@300&display=swap');
+    </style>
     <!-- Favicon -->
     <link rel="icon" href="img/favicon.png">
     <!-- Fontawesome -->
@@ -20,6 +25,7 @@
 
   <?php 
   require_once('includes/conexion.php');
+  require_once('includes/funciones.php');
 
   $logout_show = 'none';
   $registro_show = 'block';
@@ -65,7 +71,7 @@
                   Categorías
                 </a>
                 <ul class="dropdown-menu">
-                  <?php $categorias = mysqli_query($conexion_db, "SELECT * FROM categorias ORDER BY id ASC");
+                  <?php $categorias = listar_categorias($conexion_db);
                         while($categoria = mysqli_fetch_assoc($categorias)){
                           echo '<li><a class="dropdown-item" href="categoria.php?id='.$categoria["id"].'">'.$categoria['nombre'].'</a></li>';
                         };

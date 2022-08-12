@@ -33,18 +33,22 @@
 
         if (empty($_POST["email"])) {
             $errores['email'] = "Tu email es requerido";
-          } else {
-            $email = test_input($_POST["email"]);
-            if(!filter_var($_POST["email"], FILTER_VALIDATE_EMAIL)) {
-              $errores['email'] = "El mail no es válido";
-            };
+          } elseif(!filter_var($_POST["email"], FILTER_VALIDATE_EMAIL)) {
+            $errores['email'] = "El mail no es válido";  
+        }else{
+          $email = test_input($_POST["email"]);
+          if(!chequeo_mail($email, $conexion_db)){
+            $errores['email'] = "El mail ya está registrado";
+          }
         };
 
         if (empty($_POST["password"])) {
             $errores['password'] = "Una contraseña es requerida";
-          } else {
+          } elseif(!chequeo_password($_POST["password"], $conexion_db)) {
+            $errores['password'] = "La contraseña no es válida, ingrese una nueva";
+          }else{
             $password = test_input($_POST["password"]);
-          };
+        };
 
     };
 

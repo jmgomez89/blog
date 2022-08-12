@@ -20,6 +20,8 @@
     margin-top: 5%;
 }
 
+
+
 /*----------------Formularios y página de errores----------------*/
 
 .login_container {
@@ -187,6 +189,45 @@
     height: 100%;
 }
 
+/*----------------Entrada----------------*/
+
+.entrada_main_container {
+    width: 100%;
+    background-color: #85FFBD;
+    background-image: linear-gradient(45deg, #85FFBD 0%, #FFFB7D 100%);
+    padding: 2em;
+}
+
+.entrada_container {
+    width: 80%;
+    margin: 0 auto;
+    text-align: center;
+    padding: 2%;
+    background: rgba(255, 255, 255, 0.47);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.34);
+    font-family: 'Noto Serif', serif;
+}
+
+.entrada_imagen {
+    width: 50%;
+    height: 40%;
+    border-radius: 10px;
+}
+
+.entrada_titulo {
+    margin-top: 1%;
+    text-transform: uppercase;
+    font-style: oblique;
+}
+
+.entrada_contenido {
+    font-family: 'Roboto', sans-serif;
+}
+
 
 /*----------------Cards----------------*/
 
@@ -194,21 +235,17 @@
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    gap: 2%;
+    gap: 3%;
     padding: 1%;
 }
 
-.entradas_card {
-    width: 80%;
-    margin-top: 1%;
-    height: 50%;
+.card {
+    margin-top: 2.5%;
 }
 
-
-.entradas_card img {
-    width: 100%;
-    height: 35%;
-    display: block;
+.card a {
+    text-decoration: none;
+    color: black;
 }
 
 /*----------------Responsive----------------*/

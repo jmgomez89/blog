@@ -12,7 +12,7 @@
           } else {
             $categoria_test =  test_input($_POST["categoria"]);
             $categoria = ucfirst($categoria_test);
-            if (!preg_match("/^[a-zA-Z-' ]*$/",$categoria)) {
+            if (!preg_match("/^[a-zA-Z-]*$/",$categoria)) {
                 $errores['categoria'] = "Solo se permiten letras y espacios";
               };          
           };
