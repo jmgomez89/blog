@@ -3,6 +3,7 @@
     $show_link2 = 'none';
     $show_link3 = 'none';
     $show_link4 = 'none';
+    $show_link5 = 'none';
 ?>
 
 <section class="errores_container">
@@ -44,11 +45,19 @@
                 };
             ?>
 
+            <?php
+                if(isset($_SESSION['errores_captcha'])){
+                    $show_link4 = 'block';
+                    echo '<input type="text" value="'.$_SESSION['errores_captcha'].'">';
+                };
+            ?>
+
 
             <a href="/index.php?registro" style="display:<?=$show_link?>;">Volver al Registro!</a>
             <a href="/index.php?login" style="display:<?=$show_link2?>;">Volver al Login!</a>
             <a href="/index.php?categoria" style="display:<?=$show_link3?>;">Volver a Cargar Categoría</a>
             <a href="/index.php?crear_entrada"  style="display:<?=$show_link4?>;">Volver a Cargar Entrada</a>
+            <a href="/index.php"  style="display:<?=$show_link5?>;">Volver</a>
     </div>
 
 
@@ -60,5 +69,6 @@ unset($_SESSION['errores']);
 unset($_SESSION['errores_login']);
 unset($_SESSION['errores_categoria']);
 unset($_SESSION['errores_entrada']);
+unset($_SESSION['errores_captcha']);
 
 ?>

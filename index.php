@@ -40,12 +40,12 @@
 
     if(isset($_GET['registro'])){
         $show = 'none';
-        require_once("vistas/registro.html");
+        require_once("vistas/registro.php");
     };
 
     if(isset($_GET['contacto'])){
         $show = 'none';
-        require_once("vistas/contacto.html");
+        require_once("vistas/contacto.php");
     };
 
     if(isset($_GET['entrada'])){
@@ -64,6 +64,11 @@
     };
     
     if(isset($_SESSION['errores_categoria'])){
+        $show = 'none';
+        require_once("vistas/errores.php");
+    };
+
+    if(isset($_SESSION['errores_captcha'])){
         $show = 'none';
         require_once("vistas/errores.php");
     };

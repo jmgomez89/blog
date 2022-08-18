@@ -21,6 +21,8 @@
         </select>
         <input type="file" name="imagen">
         <textarea name="descripcion" id="descripcion" cols="10" rows="5"></textarea>
+        <label for="captcha">Resuelve la siguiente operación: <?php echo $_SESSION["num1"]; ?>+ <?php echo $_SESSION["num2"];?>:</label>
+        <input type="text" name="captcha">
         <input type="submit" value="Cargar" href="#">
     </form>
 

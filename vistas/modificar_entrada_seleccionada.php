@@ -7,7 +7,8 @@
     $titulo = $row["titulo"];
     $descripcion = $row["descripcion"];  
 
-    
+    $_SESSION["num1"] = rand(0,10);
+    $_SESSION["num2"] = rand(0,10);
 
 ?>
 
@@ -27,6 +28,8 @@
         <input type="hidden" name="id_seleccionado" value="<?=$id_seleccionado?>">
         <input type="file" name="imagen">
         <textarea name="descripcion" id="descripcion" cols="10" rows="5"><?=$descripcion?></textarea>
+        <label for="captcha">Resuelve la siguiente operación: <?php echo $_SESSION["num1"]; ?>+ <?php echo $_SESSION["num2"];?>:</label>
+        <input type="text" name="captcha">
         <input type="submit" value="Modificar" href="#">
     </form>
 

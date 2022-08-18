@@ -1,5 +1,8 @@
 <?php
- require_once('includes/conexion.php');
+    require_once('includes/conexion.php');
+
+    $_SESSION["num1"] = rand(0,10);
+    $_SESSION["num2"] = rand(0,10);
 ?>
 
 <section class="login_container">
@@ -14,6 +17,8 @@
                             };
             ?>
         </select>
+        <label for="captcha">Resuelve la siguiente operación: <?php echo $_SESSION["num1"]; ?>+ <?php echo $_SESSION["num2"];?>:</label>
+        <input type="text" name="captcha">
         <input type="submit" value="Eliminar" href="#">
     </form>
 

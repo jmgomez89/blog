@@ -5,17 +5,25 @@
     $categoria = '';
     $errores = array();
 
-    if(isset($_POST)){
-        
-        if (empty($_POST["categoria"])) {
-            $errores['categoria'] = "Ingrese una categoría";
-          } else {
-            $categoria_test =  test_input($_POST["categoria"]);
-            $categoria = ucfirst($categoria_test);
-            if (!preg_match("/^[a-zA-Z-]*$/",$categoria)) {
-                $errores['categoria'] = "Solo se permiten letras y espacios";
-              };          
-          };
+    if(isset($_SESSION["num1"]) && isset($_SESSION["num2"]) && isset($_POST["captcha"])){
+        $resp = $_SESSION["num1"]+$_SESSION["num2"];
+        $captcha = $_POST["captcha"];
+        if($resp==$captcha){
+            if(isset($_POST)){
+                
+                if (empty($_POST["categoria"])) {
+                    $errores['categoria'] = "Ingrese una categoría";
+                } else {
+                    $categoria_test =  test_input($_POST["categoria"]);
+                    $categoria = ucfirst($categoria_test);
+                    if (!preg_match("/^[a-zA-Z-]*$/",$categoria)) {
+                        $errores['categoria'] = "Solo se permiten letras y espacios";
+                    };          
+                };
+            };
+        }else{
+            $errores['categoria'] = "Captcha incorrecto";
+        };
     };
 
     if(count($errores) == 0){

@@ -13,35 +13,43 @@
     $errores = array();
 
     
+    if(isset($_SESSION["num1"]) && isset($_SESSION["num2"]) && isset($_POST["captcha"])){
+        $resp = $_SESSION["num1"]+$_SESSION["num2"];
+        $captcha = $_POST["captcha"];
+        if($resp==$captcha){
+            if(isset($_POST)){
+                
+                if (empty($_POST["titulo"])) {
+                    $errores['titulo'] = "Un título es requerido";
+                }else{
+                    $titulo = $_POST["titulo"];
+                };
 
-    if(isset($_POST)){
-        
-        if (empty($_POST["titulo"])) {
-            $errores['titulo'] = "Un título es requerido";
+                if (empty($_POST["descripcion"])) {
+                    $errores['descripcion'] = "El contenido de la entrada es requerido";
+                }else{
+                    $descripcion = $_POST["descripcion"];
+                };
+
+                if (empty($_POST["categoria"])) {
+                    $errores['categoria'] = "Elija una categoría";
+                }else{
+                    $categoria_nombre = $_POST["categoria"];
+                };
+
+                if (empty($_FILES['imagen']["tmp_name"])) {
+                    $errores['imagen'] = "Una imagen es requerida";
+                } else {
+                    $imagen = $_FILES['imagen']["tmp_name"];
+                    $imgContenido = addslashes(file_get_contents($imagen));
+                };
+
+            };
         }else{
-            $titulo = $_POST["titulo"];
+            $errores['titulo'] = "Captcha incorrecto";
         };
-
-        if (empty($_POST["descripcion"])) {
-            $errores['descripcion'] = "El contenido de la entrada es requerido";
-        }else{
-            $descripcion = $_POST["descripcion"];
-        };
-
-        if (empty($_POST["categoria"])) {
-            $errores['categoria'] = "Elija una categoría";
-        }else{
-            $categoria_nombre = $_POST["categoria"];
-        };
-
-        if (empty($_FILES['imagen']["tmp_name"])) {
-            $errores['imagen'] = "Una imagen es requerida";
-          } else {
-            $imagen = $_FILES['imagen']["tmp_name"];
-            $imgContenido = addslashes(file_get_contents($imagen));
-          };
-
     };
+    
 
     if(count($errores) == 0){
 

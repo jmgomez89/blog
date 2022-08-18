@@ -26,16 +26,19 @@
 
 .login_container {
     width: 100%;
-    height: 110vh;
+    height: 80%;
     background-color: #85FFBD;
     background-image: linear-gradient(45deg, #85FFBD 0%, #FFFB7D 100%);
     padding: 2em;
 }
 
+.login_container label {
+    color: lightsalmon;
+}
 
 .errores_container {
     width: 100%;
-    height: 110vh;
+    height: 80%;
     background-color: #85FFBD;
     background-image: linear-gradient(45deg, #85FFBD 0%, #FFFB7D 100%);
     padding: 2em;
@@ -91,7 +94,7 @@
 }
 
 .login_box {
-    width: 40%;
+    width: 70%;
     padding: 40px;
     margin: 0 auto;
     background: #191919;
@@ -108,7 +111,7 @@
     text-align: center;
     border: 2px solid #3498db;
     padding: 10px 10px;
-    width: 60%;
+    width: 70%;
     outline: none;
     color: white;
     border-radius: 24px;
@@ -131,7 +134,7 @@
     text-align: center;
     border: 2px solid #3498db;
     padding: 10px 10px;
-    width: 60%;
+    width: 40%;
     outline: none;
     color: white;
     border-radius: 24px;
@@ -146,14 +149,17 @@
 
 .login_box select:focus,
 .login_box input[type="file"]:focus,
-.login_box textarea:focus,
 .login_box input[type="text"]:focus,
 .login_box input[type="email"]:focus,
 .login_box input[type="password"]:focus {
-    width: 70%;
+    width: 50%;
     border-color: #2ecc71
 }
 
+.login_box textarea:focus {
+    width: 90%;
+    border-color: #2ecc71
+}
 .login_box input[type="submit"] {
     border: 0;
     background: none;
