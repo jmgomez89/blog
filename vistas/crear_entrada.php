@@ -1,5 +1,9 @@
 <?php
- require_once('includes/conexion.php');
+    require_once('includes/conexion.php');
+
+    $_SESSION["num1"] = rand(0,10);
+    $_SESSION["num2"] = rand(0,10);
+
 ?>
 
 <section class="login_container">

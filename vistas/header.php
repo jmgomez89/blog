@@ -63,8 +63,17 @@
               <li class="nav-item">
                 <a class="nav-link" href="includes/logout.php" style="display:<?=$logout_show?> ;">Logout</a>
               </li>
-              <li class="nav-item">
-                <a class="nav-link" href="index.php?crear_entrada" style="display:<?=$logout_show?> ;">Crear Entrada</a>
+              <li style="display:<?=$logout_show?> ;" class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Entradas
+                </a>
+                <ul class="dropdown-menu">
+                 <li><a class="dropdown-item" href="index.php?crear_entrada">Crear Entrada</a></li>
+                 <li><hr class="dropdown-divider"></li>
+                 <li><a class="dropdown-item" href="index.php?borrar_entrada">Eliminar Entrada</a></li>
+                 <li><hr class="dropdown-divider"></li>
+                 <li><a class="dropdown-item" href="index.php?modificar_entrada">Modificar Entrada</a></li>
+                </ul>
               </li>
               <li style="display:<?=$logout_show?> ;" class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">

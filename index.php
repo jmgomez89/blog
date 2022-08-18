@@ -28,6 +28,16 @@
         require_once("vistas/crear_entrada.php");
     };
 
+    if(isset($_GET['borrar_entrada'])){
+        $show = 'none';
+        require_once("vistas/borrar_entrada.php");
+    };
+
+    if(isset($_GET['modificar_entrada'])){
+        $show = 'none';
+        require_once("vistas/modificar_entrada.php");
+    };
+
     if(isset($_GET['registro'])){
         $show = 'none';
         require_once("vistas/registro.html");
@@ -63,6 +73,11 @@
         require_once("vistas/errores.php");
     };
 
+    if(isset($_POST['cambio_vista'])){
+        $show = 'none';
+        require_once("vistas/modificar_entrada_seleccionada.php");
+    };
+
 ?>
 
 <div class="container-fluid main_container" style="display:<?=$show?> ;" >
@@ -75,23 +90,29 @@
             
                 <?php
                     $result = listar_entradas($conexion_db);
-                    while ($row = mysqli_fetch_array($result)) {
+                    if(empty($result)){
+                        echo '<h2>Aún no se han creado entradas</h2>';
+                    }else{
 
-                    echo '<div class="card" style="width: 18rem;">
-                            <img src="data:image/jpeg;base64,'.base64_encode($row["imagen"]).'" class="card-img-top" alt="imagen entrada" style="height: 12rem;">
-                            <div class="card-body">
-                                <a href="index.php?entrada='.$row["id"].'"><h5>'.$row["titulo"].'</h5></a>
-                                <p class="card-text">'.$contenido = substr($row["descripcion"], 0, 300).'...</p>
-                                <span class="badge rounded-pill text-bg-secondary">'.$row["usu_nombre"].'</span>
-                                <span class="badge text-bg-info">'.$row["cat_nombre"].'</span>
-                                <hr>
-                                <small>Publicado '.timeago($row["fecha"]).'</small>
-                            </div>
-                          </div>';   
-                                
-                    }
-                    
-                    mysqli_free_result($result)
+                        while ($row = mysqli_fetch_array($result)) {
+    
+                        echo '<div class="card" style="width: 18rem;">
+                                <img src="data:image/jpeg;base64,'.base64_encode($row["imagen"]).'" class="card-img-top" alt="imagen entrada" style="height: 12rem;">
+                                <div class="card-body">
+                                    <a href="index.php?entrada='.$row["id"].'"><h5>'.$row["titulo"].'</h5></a>
+                                    <p class="card-text">'.$contenido = substr($row["descripcion"], 0, 300).'...</p>
+                                    <span class="badge rounded-pill text-bg-secondary">'.$row["usu_nombre"].'</span>
+                                    <span class="badge text-bg-info">'.$row["cat_nombre"].'</span>
+                                    <hr>
+                                    <small>Publicado '.timeago($row["fecha"]).'</small>
+                                </div>
+                              </div>';   
+                                    
+                        }
+                        
+                        mysqli_free_result($result);
+
+                    };
 
                 ?>
             </div>
